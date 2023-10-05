@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora Simples</title>
+    <style>
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+        button {
+            width: 48px;
+            height: 48px;
+            font-size: 18px;
+            margin: 5px;
+        }
+        #resultado {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora Simples</h1>
+    <input type="text" id="display" disabled>
+    <div>
+        <button onclick="limpar()">C</button>
+        <button onclick="adicionarNumero('7')">7</button>
+        <button onclick="adicionarNumero('8')">8</button>
+        <button onclick="adicionarNumero('9')">9</button>
+        <button onclick="adicionarOperador('+')">+</button>
+    </div>
+    <div>
+        <button onclick="adicionarNumero('4')">4</button>
+        <button onclick="adicionarNumero('5')">5</button>
+        <button onclick="adicionarNumero('6')">6</button>
+        <button onclick="adicionarOperador('-')">-</button>
+    </div>
+    <div>
+        <button onclick="adicionarNumero('1')">1</button>
+        <button onclick="adicionarNumero('2')">2</button>
+        <button onclick="adicionarNumero('3')">3</button>
+        <button onclick="adicionarOperador('*')">*</button>
+    </div>
+    <div>
+        <button onclick="adicionarNumero('0')">0</button>
+        <button onclick="calcular()">=</button>
+        <button onclick="adicionarOperador('/')">/</button>
+    </div>
+    <div id="resultado"></div>
+
+    <script>
+        let display = document.getElementById("display");
+        let resultado = document.getElementById("resultado");
+        let valorAtual = "";
+        let operador = "";
+        let valorAnterior = "";
+
+        function adicionarNumero(numero) {
+            valorAtual += numero;
+            display.value = valorAtual;
+        }
+
+        function adicionarOperador(op) {
+            if (valorAtual !== "") {
+                operador = op;
+                valorAnterior = valorAtual;
+                valorAtual = "";
+            }
+        }
+
+        function calcular() {
+            if (valorAtual !== "") {
+                let resultadoCalculo;
+                switch (operador) {
+                    case '+':
+                        resultadoCalculo = parseFloat(valorAnterior) + parseFloat(valorAtual);
+                        break;
+                    case '-':
+                        resultadoCalculo = parseFloat(valorAnterior) - parseFloat(valorAtual);
+                        break;
+                    case '*':
+                        resultadoCalculo = parseFloat(valorAnterior) * parseFloat(valorAtual);
+                        break;
+                    case '/':
+                        resultadoCalculo = parseFloat(valorAnterior) / parseFloat(valorAtual);
+                        break;
+                }
+                resultado.textContent = "Resultado: " + resultadoCalculo;
+                valorAtual = resultadoCalculo.toString();
+                display.value = "";
+            }
+        }
+
+        function limpar() {
+            valorAtual = "";
+            operador = "";
+            valorAnterior = "";
+            display.value = "";
+            resultado.textContent = "";
+        }
+    </script>
+</body>
+</html>
