@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verificador de Número</title>
+</head>
+<body>
+    <h1>Verificador de Número</h1>
+    <p>Insira um número:</p>
+    <form>
+        <input type="number" id="numero" step="any">
+        <button type="button" onclick="verificaNumero()">Verificar</button>
+    </form>
+    <p id="resultado"></p>
+
+    <script>
+        function verificaNumero() {
+            // Obter o número do formulário
+            var numero = parseFloat(document.getElementById("numero").value);
+
+            // Verificar se o número é positivo, negativo ou zero
+            var mensagem = "";
+            if (isNaN(numero)) {
+                mensagem = "Por favor, insira um número válido.";
+            } else if (numero > 0) {
+                mensagem = "O número é positivo.";
+            } else if (numero < 0) {
+                mensagem = "O número é negativo.";
+            } else {
+                mensagem = "O número é zero.";
+            }
+
+            // Exibir o resultado
+            document.getElementById("resultado").textContent = mensagem;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verificador de Número Par ou Ímpar</title>
+</head>
+<body>
+    <h1>Verificador de Número Par ou Ímpar</h1>
+
+    <label for="numero">Digite um número:</label>
+    <input type="number" id="numero">
+    <button onclick="verificarNumero()">Verificar</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function defineNumero(numero) {
+            if (numero % 2 === 0) {
+                return "O número é par.";
+            } else {
+                return "O número é ímpar.";
+            }
+        }
+
+        function verificarNumero() {
+            const numeroDigitado = parseInt(document.getElementById("numero").value);
+            const resultadoElement = document.getElementById("resultado");
+
+            if (!isNaN(numeroDigitado)) {
+                const mensagem = defineNumero(numeroDigitado);
+                resultadoElement.textContent = mensagem;
+            } else {
+                resultadoElement.textContent = "Por favor, digite um número válido.";
+            }
+        }
+    </script>
+</body>
+</html>
