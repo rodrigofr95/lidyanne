@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Definir Número</title>
+</head>
+<body>
+    <h1>Definir Número</h1>
+    
+    <label for="numero">Digite um número:</label>
+    <input type="number" id="numero">
+    
+    <button onclick="exibirNumero()">Exibir Número</button>
+    
+    <p>O número digitado é: <span id="numeroExibido"></span></p>
+    
+    <script>
+        function exibirNumero() {
+            // Obter o valor do campo de entrada
+            var numero = document.getElementById("numero").value;
+            
+            // Exibir o número na página
+            document.getElementById("numeroExibido").textContent = numero;
+        }
+    </script>
+</body>
+</html>
+Este código HTML cria uma página simples onde você pode digitar um número em um campo de entrada e, ao clicar no botão "Exibir Número", o número digitado será exibido na página. O número é exibido em um parágrafo com o id numeroExibido. Basta salvar este código em um arquivo HTML chamado definenumero.html e abri-lo em seu navegador para testá-lo.
+
+
+
+
+
